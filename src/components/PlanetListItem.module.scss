@@ -1,0 +1,14 @@
+.listItem{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:white;
+    border-bottom: 1px solid rgba(102, 102, 102, 0.25);;
+    
+}
+
+.nameText{
+    font:inherit;
+    font-weight: bold;
+}

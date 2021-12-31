@@ -1,0 +1,24 @@
+
+
+.headerBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+  border-bottom: 1px solid grey;
+  padding: 0 1rem;
+}
+
+.title{
+    font-family: 'Antonio-medium', sans-serif;
+    color:white;
+    font-weight: 500;
+  }
+  
+
+@media (min-width: 400px){
+  .sideToggleButton{
+    display: none;
+  }
+}
+
