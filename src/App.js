@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import PlanetList from './components/PlanetList';
+import PlanetOverview from './components/PlanetOverview';
 
 function App() {
   const [planetData , setPlanetData] = useState(null);
@@ -35,7 +37,14 @@ function App() {
     <div className="App">
       <Header/>
       <main>
-      {planetList}
+        <Switch>
+          <Route path={'/mercury'}>
+          {<PlanetOverview/>}
+          </Route>
+          <Route path={'/'}>
+          {planetList}
+          </Route>
+        </Switch>
       </main>
     </div>
   );
