@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import styles from "./PlanetOverview.module.scss";
 
 import mercury from "../starter-code/assets/planet-mercury.svg";
 import source from "../starter-code/assets/icon-source.svg";
+import PlanetFactBar from "./PlanetFactBar";
 
 const PlanetOverview = (props) => {
   return (
-      <React.Fragment>
+        <Fragment>
     <div className={styles.planetOverviewPage}>
       <nav className={styles.overview_nav}>
         <a>Overview</a>
@@ -34,7 +35,17 @@ const PlanetOverview = (props) => {
         <img className={styles.sourceIcon} src={source}></img>
       </section>
     </div>
-    </React.Fragment>
+
+    <div className={styles.planetStats}>
+      <ul className={styles.planetStatsList}>
+      <PlanetFactBar />
+      <PlanetFactBar />
+      <PlanetFactBar />
+      <PlanetFactBar />
+      </ul>
+    </div>
+
+      </Fragment>
   );
 };
 

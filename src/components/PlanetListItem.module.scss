@@ -4,11 +4,16 @@
     justify-content: space-between;
     align-items: center;
     color:white;
-    border-bottom: 1px solid rgba(97, 97, 97, 0.25);;
+    border-bottom: 1px solid rgba(97, 97, 97, 0.25);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
     
 }
 
 .nameText{
     font:inherit;
-    font-weight: bold;
+    font-family: 'Antonio', sans-serif;
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
 }
