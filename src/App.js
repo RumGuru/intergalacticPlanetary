@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import PlanetList from './components/PlanetList';
-import PlanetOverview from './components/PlanetOverview';
+import PlanetPage from './components/PlanetPage';
 
 function App() {
   const [planetData , setPlanetData] = useState(null);
@@ -39,7 +39,7 @@ function App() {
       <main>
         <Switch>
           <Route path={'/mercury'}>
-          {<PlanetOverview/>}
+          {<PlanetPage/>}
           </Route>
           <Route path={'/'}>
           {planetList}

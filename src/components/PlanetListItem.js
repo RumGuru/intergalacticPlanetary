@@ -7,7 +7,7 @@ const PlanetListItem = (props) => {
             <div className={styles.listItem}>
                 <div>
                     <div className={styles.planetIcon}/>
-                    <NavLink className={styles.nameText} to='/mercury'>{props.name}</NavLink>
+                    <NavLink className={styles.nameText} to='/mercury/overview'>{props.name}</NavLink>
                     
                     
                 </div>
