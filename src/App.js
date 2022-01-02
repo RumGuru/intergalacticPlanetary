@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
+
 import './App.css';
+import Loader from 'react-loader-spinner';
+
 import Header from './components/Header';
-import PlanetList from './components/PlanetList';
-import PlanetPage from './components/PlanetPage';
+import PlanetList from './pages/PlanetList';
+import PlanetPage from './pages/PlanetPage';
+
 
 function App() {
   const [planetData , setPlanetData] = useState(null);
@@ -37,7 +41,10 @@ function App() {
   }
 
   if (loadingSpinner) {
-    planetList=(<p style={{color:"white"}}>LOADING...</p>)
+    planetList=(
+    <div className="loadingSpinner">
+<Loader type="Circles" color="white" height={80} width={80}></Loader>
+      </div>)
   };
 
 
@@ -46,8 +53,8 @@ function App() {
       <Header/>
       <main>
         <Switch>
-          <Route path={'/mercury'}>
-          {<PlanetPage/>}
+          <Route path={'/planets/:planetName'}>
+          {<PlanetPage planets={planetData} />}
           </Route>
           <Route path={'/'}>
           {planetList}

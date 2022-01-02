@@ -1,4 +1,4 @@
-import PlanetListItem from "./PlanetListItem"
+import PlanetListItem from "../components/PlanetListItem"
 
 import styles from './PlanetList.module.scss';
 

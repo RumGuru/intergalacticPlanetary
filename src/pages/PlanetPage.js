@@ -1,18 +1,22 @@
 import React, { Fragment } from "react";
 import styles from "./PlanetPage.module.scss";
-import PlanetFactBar from "./PlanetFactBar";
+import PlanetFactBar from "../components/PlanetFactBar";
 import { NavLink, Route } from "react-router-dom";
-import PlanetOverview from "./PlanetOverview";
-import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
+import PlanetOverview from "../components/PlanetOverview";
+import { useParams, useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
 const PlanetPage = (props) => {
   const match = useRouteMatch();
+  const params = useParams();
+  console.log(props.planets);
+  const currentPlanet = props.planets.find((planet) => planet.name === params.planetName);
 
+  console.log(match);
   return (
     <Fragment>
       <div className={styles.planetOverviewPage}>
         <nav className={styles.overview_nav}>
-          <NavLink to={`${match.path}/overview`} activeClassName={styles.activeTab}>
+          <NavLink to={`/planets/${match.params['planetName']}/overview`} activeClassName={styles.activeTab}>
             Overview
           </NavLink>
           <NavLink to="/structure" activeClassName={styles.activeTab}>
@@ -21,8 +25,8 @@ const PlanetPage = (props) => {
           <NavLink to="/surface">Surface</NavLink>
         </nav>
 
-        <Route path={`${match.path}/overview`}>
-          <PlanetOverview />
+        <Route path={`/planets/${params.planetName}/overview`}>
+          <PlanetOverview planet={currentPlanet} />
         </Route>
       </div>
 
