@@ -5,7 +5,7 @@ const PlanetFactBar = (props) => {
         <li className={styles.planetStatListItem}>
             <p>Rotation Time</p>
             <div>
-            <h3>58.6 <br/> Days</h3>
+            <h3 className={styles.factHeader}>58.6 <br/> Days</h3>
             </div>
         </li>
     )

@@ -7,30 +7,38 @@ import PlanetPage from './components/PlanetPage';
 
 function App() {
   const [planetData , setPlanetData] = useState(null);
+  const [loadingSpinner , setLoadingSpinner] = useState(false);
 
   const fetchData = async () => {
+    setLoadingSpinner(true);
     try{
       const result = await fetch('data.json');
-      if (!result){
+      if (!result.ok){
         throw new Error('could not load data')
       }
       const data = await result.json();
       console.log(data);
       setPlanetData(data);
-    } catch{
-      console.log(Error);
+    } catch(error){
+      console.log(error.message);
     }
 
+    setLoadingSpinner(false);
   }
 
   useEffect(()=>{
     fetchData();
   },[]);
 
-  let planetList = <p>Loading</p>
-  if (planetData !== null) {
+  let planetList = <p style={{color:"white"}}>No Movies Found</p>;
+
+  if (!loadingSpinner && planetData !== null) {
     planetList = (<PlanetList planets={planetData}/>);
   }
+
+  if (loadingSpinner) {
+    planetList=(<p style={{color:"white"}}>LOADING...</p>)
+  };
 
 
   return (
