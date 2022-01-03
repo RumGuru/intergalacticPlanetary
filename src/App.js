@@ -31,6 +31,7 @@ function App() {
   },[]);
 
   useEffect(()=>{
+    console.log('fetching');
     fetchData();
   },[fetchData]);
 
