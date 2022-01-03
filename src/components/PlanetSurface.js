@@ -2,13 +2,13 @@ import { Fragment } from "react";
 
 import source from "../starter-code/assets/icon-source.svg";
 
-import styles from './PlanetOverview.module.scss';
+import styles from './PlanetSurface.module.scss';
 
 
 
-const PlanetOverview = (props) => {
+const PlanetSurface = (props) => {
 
-  const imagePath = props.planet.images.planet.substring(1);  
+  const imagePath = props.planet.images.geology.substring(1);  
 
     return (
         <Fragment>
@@ -20,11 +20,11 @@ const PlanetOverview = (props) => {
       </section>
       <section className={styles.planetOverviewSection}>
         <p className={styles.planetOverview}>
-          {props.planet.overview.content}
+          {props.planet.geology.content}
         </p>
       </section>
       <section className={styles.sourceSection}>
-        <a href={props.planet.overview.source}>
+        <a href={props.planet.geology.source}>
           Source: WikiPedia
         </a>
         <img className={styles.sourceIcon} src={source} alt="Source Icon"></img>
@@ -33,4 +33,4 @@ const PlanetOverview = (props) => {
     )
 } 
 
-export default PlanetOverview;
+export default PlanetSurface;

@@ -6,9 +6,9 @@ import styles from './PlanetOverview.module.scss';
 
 
 
-const PlanetOverview = (props) => {
+const PlanetStructure = (props) => {
 
-  const imagePath = props.planet.images.planet.substring(1);  
+  const imagePath = props.planet.images.internal.substring(1);  
 
     return (
         <Fragment>
@@ -20,11 +20,11 @@ const PlanetOverview = (props) => {
       </section>
       <section className={styles.planetOverviewSection}>
         <p className={styles.planetOverview}>
-          {props.planet.overview.content}
+          {props.planet.structure.content}
         </p>
       </section>
       <section className={styles.sourceSection}>
-        <a href={props.planet.overview.source}>
+        <a href={props.planet.structure.source}>
           Source: WikiPedia
         </a>
         <img className={styles.sourceIcon} src={source} alt="Source Icon"></img>
@@ -33,4 +33,4 @@ const PlanetOverview = (props) => {
     )
 } 
 
-export default PlanetOverview;
+export default PlanetStructure;
