@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
@@ -13,7 +13,7 @@ function App() {
   const [planetData , setPlanetData] = useState(null);
   const [loadingSpinner , setLoadingSpinner] = useState(false);
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     setLoadingSpinner(true);
     try{
       const result = await fetch('data.json');
@@ -28,11 +28,11 @@ function App() {
     }
 
     setLoadingSpinner(false);
-  }
+  },[]);
 
   useEffect(()=>{
     fetchData();
-  },[]);
+  },[fetchData]);
 
   let planetList = <p style={{color:"white"}}>No Movies Found</p>;
 

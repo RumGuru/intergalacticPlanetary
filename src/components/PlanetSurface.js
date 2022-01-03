@@ -8,12 +8,14 @@ import styles from './PlanetSurface.module.scss';
 
 const PlanetSurface = (props) => {
 
-  const imagePath = props.planet.images.geology.substring(1);  
+  const planetImagePath = props.planet.images.planet.substring(1); 
+  const geologyImagePath = props.planet.images.geology.substring(1); 
 
     return (
         <Fragment>
         <section className={styles.planetImageSection}>
-        <img className={styles.planetImage} src={imagePath} alt="Planet"></img>
+        <img className={styles.planetImage} src={planetImagePath} alt="Planet"></img>
+        <img className={styles.geologyImage} src={geologyImagePath} alt="Planet"></img>
       </section>
       <section className={styles.planetTitleSection}>
         <h5 className={styles.planetTitle}>{props.planet.name}</h5>
