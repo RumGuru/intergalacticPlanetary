@@ -10,7 +10,7 @@ import PlanetPage from './pages/PlanetPage';
 
 
 function App() {
-  const [planetData , setPlanetData] = useState(null);
+  const [planetData , setPlanetData] = useState([]);
   const [loadingSpinner , setLoadingSpinner] = useState(false);
 
   const fetchData = useCallback(async () => {
