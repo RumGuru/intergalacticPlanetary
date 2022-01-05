@@ -11,10 +11,11 @@ const Header = (props) => {
     lowOpacity = '';
   }
 
+
 return (
     <header className={styles.headerBar}>
       <NavLink to={'/'} className={styles.title} >The Planets</NavLink>
-        <div className={styles.sideToggleButton, lowOpacity}>
+        <div className={styles.sideToggleButton, lowOpacity} onClick={props.openDropdown}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="17"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h24v3H0zM0 7h24v3H0zM0 14h24v3H0z"/></g></svg>
         </div>
       </header>

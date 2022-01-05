@@ -1,108 +1,112 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { useCallback, useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
 
-import './App.css';
-import Loader from 'react-loader-spinner';
+import "./App.css";
+import Loader from "react-loader-spinner";
 
-import Header from './components/Header';
-import PlanetList from './pages/PlanetList';
-import PlanetPage from './pages/PlanetPage';
-
+import Header from "./components/Header";
+import PlanetList from "./pages/PlanetList";
+import PlanetPage from "./pages/PlanetPage";
+import Dropdown from "./components/Dropdown";
 
 function App() {
-  const [planetData , setPlanetData] = useState([]);
-  const [loadingSpinner , setLoadingSpinner] = useState(false);
+  const [planetData, setPlanetData] = useState([]);
+  const [loadingSpinner, setLoadingSpinner] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoadingSpinner(true);
-    try{
-      const result = await fetch('http://localhost:3000/data.json');
-      console.log(result);
-      if (!result.ok){
-        throw new Error('could not load data')
+    try {
+      const result = await fetch("http://localhost:3000/data.json");
+
+      if (!result.ok) {
+        throw new Error("could not load data");
       }
       const data = await result.json();
-      console.log(data);
+
 
       //Add a color value to each planet
 
-    
-
-
-
       const newData = data.map((planet) => {
         let color;
-        switch(planet.name) {
-          case 'Mercury':
+        switch (planet.name) {
+          case "Mercury":
             color = "White";
             break;
-          case 'Venus':
+          case "Venus":
             color = "#F7CC7F";
             break;
-            case 'Earth':
+          case "Earth":
             color = "Blue";
             break;
-            case 'Mars':
+          case "Mars":
             color = "#FF6A45";
             break;
-            case 'Jupiter':
+          case "Jupiter":
             color = "#ECAD7A";
             break;
-            case 'Saturn':
+          case "Saturn":
             color = "#FCCB6B";
             break;
-            case 'Uranus':
+          case "Uranus":
             color = "#65F0D5";
             break;
-            case 'Neptune':
+          case "Neptune":
             color = "#497EFA";
             break;
           default:
-            color='pink';
+            color = "pink";
         }
-        return {...planet , planetColor: color}
+        return { ...planet, planetColor: color };
       });
 
       setPlanetData(newData);
-    } catch(error){
+    } catch (error) {
       console.log(error.message);
     }
 
     setLoadingSpinner(false);
-  },[]);
+  }, []);
 
-  useEffect(()=>{
-    console.log('fetching');
+  useEffect(() => {
     fetchData();
-  },[fetchData]);
+  }, [fetchData]);
 
-  let planetList = <p style={{color:"white"}}>No Movies Found</p>;
+
+  let planetList = <p style={{ color: "white" }}>No Movies Found</p>;
 
   if (!loadingSpinner && planetData !== []) {
-    planetList = (<PlanetList planets={planetData}/>);
+    planetList = <PlanetList planets={planetData} />;
   }
 
   if (loadingSpinner) {
-    planetList=(
-    <div className="loadingSpinner">
-<Loader type="Circles" color="white" height={80} width={80}></Loader>
-      </div>)
-  };
+    planetList = (
+      <div className="loadingSpinner">
+        <Loader type="Circles" color="white" height={80} width={80}></Loader>
+      </div>
+    );
+  }
 
+  const openDropdown = () => {
+    setShowDropdown(true);
+  }
+
+  const closeDropdown = () => {
+    setShowDropdown(false);
+  }
 
   return (
     <div className="App">
-      <Route path={'/'}>
-      <Header/>
+      <Route path={"/"}>
+        <Header openDropdown={openDropdown} />
       </Route>
       <main>
+        {showDropdown && <Dropdown planets={planetData} closeDropdown={closeDropdown} />}
         <Switch>
-          <Route path={'/planets/:planetName'}>
-          {<PlanetPage planets={planetData} />}
+          <Route path={"/planets/:planetName"}>
+            {<PlanetPage planets={planetData} />}
           </Route>
-          <Route path={'/'}>
-          {planetList}
-          </Route>
+          <Route path={"/"}>{planetList}</Route>
         </Switch>
       </main>
     </div>

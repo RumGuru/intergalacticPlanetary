@@ -24,8 +24,6 @@ const PlanetPage = (props) => {
 
   const spinner = !props.planets.length;
 
-  console.log(spinner);
-
   let planetData = <p>LOADING</p>;
 
   if (spinner) {

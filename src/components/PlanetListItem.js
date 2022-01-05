@@ -4,7 +4,7 @@ import styles from './PlanetListItem.module.scss';
 const PlanetListItem = (props) => {
 
     return (
-        <li>
+        <li onClick={props.onClick}>
             <div className={styles.listItem}>
                 <div className={styles.planetName} >
                     <div className={styles.planetIcon} style={{backgroundColor:props.color}}/>

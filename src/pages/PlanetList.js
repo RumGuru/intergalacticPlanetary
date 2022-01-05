@@ -4,11 +4,11 @@ import styles from './PlanetList.module.scss';
 
 const PlanetList = (props) => {
     const planetListItem = props.planets.map((planet) => {
-        return (<PlanetListItem key={planet.name} name={planet.name} color={planet.planetColor} />);
+        return (<PlanetListItem onClick={props.closeDropdown && props.closeDropdown} key={planet.name} name={planet.name} color={planet.planetColor} />);
     })
 
     return (
-        <ul>
+        <ul className={styles.planetList}>
             {planetListItem}
         </ul>
     )
