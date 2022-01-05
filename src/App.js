@@ -92,7 +92,9 @@ function App() {
 
   return (
     <div className="App">
+      <Route path={'/'}>
       <Header/>
+      </Route>
       <main>
         <Switch>
           <Route path={'/planets/:planetName'}>

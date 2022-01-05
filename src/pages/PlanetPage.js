@@ -5,32 +5,28 @@ import { NavLink, Route, Switch } from "react-router-dom";
 import PlanetOverview from "../components/PlanetOverview";
 import PlanetStructure from "../components/PlanetStructure";
 import PlanetSurface from "../components/PlanetSurface";
-import {
-  useParams,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 import Loader from "react-loader-spinner";
 
 const PlanetPage = (props) => {
-
   const params = useParams();
 
   const currentPlanet = props.planets.find(
     (planet) => planet.name === params.planetName
   );
 
-  let color = '';
+  let color = "";
 
-  if (props.planets.length){
- color = currentPlanet.planetColor;
+  if (props.planets.length) {
+    color = currentPlanet.planetColor;
   }
 
+  const spinner = !props.planets.length;
 
- const spinner = !props.planets.length;
+  console.log(spinner);
 
- console.log(spinner);
-
- let planetData = (<p>LOADING</p>);
+  let planetData = <p>LOADING</p>;
 
   if (spinner) {
     planetData = (
@@ -46,30 +42,44 @@ const PlanetPage = (props) => {
             <NavLink
               to={`/planets/${params.planetName}/overview`}
               activeClassName={styles.activeTab}
-              activeStyle={{borderBottom:`4px solid ${color}`}}
+              activeStyle={{ borderBottom: `4px solid ${color}` }}
             >
-             Overview
+              Overview
             </NavLink>
             <NavLink
               to={`/planets/${params.planetName}/structure`}
               activeClassName={styles.activeTab}
+              activeStyle={{ borderBottom: `4px solid ${color}` }}
             >
               Structure
             </NavLink>
-            <NavLink to={`/planets/${params.planetName}/surface`}>
+            <NavLink
+              to={`/planets/${params.planetName}/surface`}
+              activeClassName={styles.activeTab}
+              activeStyle={{ borderBottom: `4px solid ${color}` }}
+            >
               Surface
             </NavLink>
           </nav>
 
           <Switch>
             <Route path={`/planets/${params.planetName}/overview`}>
-              <PlanetOverview color={currentPlanet.planetColor} planet={currentPlanet} />
+              <PlanetOverview
+                color={currentPlanet.planetColor}
+                planet={currentPlanet}
+              />
             </Route>
             <Route path={`/planets/${params.planetName}/structure`}>
-              <PlanetStructure color={currentPlanet.planetColor} planet={currentPlanet} />
+              <PlanetStructure
+                color={currentPlanet.planetColor}
+                planet={currentPlanet}
+              />
             </Route>
             <Route path={`/planets/${params.planetName}/surface`}>
-              <PlanetSurface color={currentPlanet.planetColor} planet={currentPlanet} />
+              <PlanetSurface
+                color={currentPlanet.planetColor}
+                planet={currentPlanet}
+              />
             </Route>
           </Switch>
         </div>
@@ -95,11 +105,7 @@ const PlanetPage = (props) => {
     );
   }
 
-  return (
-    <Fragment>
-{planetData}
-    </Fragment>
-  ) ;
+  return <Fragment>{planetData}</Fragment>;
 };
 
 export default PlanetPage;
