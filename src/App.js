@@ -23,7 +23,47 @@ function App() {
       }
       const data = await result.json();
       console.log(data);
-      setPlanetData(data);
+
+      //Add a color value to each planet
+
+    
+
+
+
+      const newData = data.map((planet) => {
+        let color;
+        switch(planet.name) {
+          case 'Mercury':
+            color = "White";
+            break;
+          case 'Venus':
+            color = "#F7CC7F";
+            break;
+            case 'Earth':
+            color = "Blue";
+            break;
+            case 'Mars':
+            color = "#FF6A45";
+            break;
+            case 'Jupiter':
+            color = "#ECAD7A";
+            break;
+            case 'Saturn':
+            color = "#FCCB6B";
+            break;
+            case 'Uranus':
+            color = "#65F0D5";
+            break;
+            case 'Neptune':
+            color = "#497EFA";
+            break;
+          default:
+            color='pink';
+        }
+        return {...planet , planetColor: color}
+      });
+
+      setPlanetData(newData);
     } catch(error){
       console.log(error.message);
     }

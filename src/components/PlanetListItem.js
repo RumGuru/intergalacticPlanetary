@@ -2,11 +2,12 @@ import { NavLink } from 'react-router-dom';
 import styles from './PlanetListItem.module.scss';
 
 const PlanetListItem = (props) => {
+
     return (
         <li>
             <div className={styles.listItem}>
-                <div>
-                    <div className={styles.planetIcon}/>
+                <div className={styles.planetName} >
+                    <div className={styles.planetIcon} style={{backgroundColor:props.color}}/>
                     <NavLink className={styles.nameText} to={`/planets/${props.name}/overview`}>{props.name}</NavLink>
                     
                 </div>

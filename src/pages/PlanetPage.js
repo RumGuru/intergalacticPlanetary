@@ -19,6 +19,13 @@ const PlanetPage = (props) => {
     (planet) => planet.name === params.planetName
   );
 
+  let color = '';
+
+  if (props.planets.length){
+ color = currentPlanet.planetColor;
+  }
+
+
  const spinner = !props.planets.length;
 
  console.log(spinner);
@@ -39,8 +46,9 @@ const PlanetPage = (props) => {
             <NavLink
               to={`/planets/${params.planetName}/overview`}
               activeClassName={styles.activeTab}
+              activeStyle={{borderBottom:`4px solid ${color}`}}
             >
-              Overview
+             Overview
             </NavLink>
             <NavLink
               to={`/planets/${params.planetName}/structure`}
@@ -55,13 +63,13 @@ const PlanetPage = (props) => {
 
           <Switch>
             <Route path={`/planets/${params.planetName}/overview`}>
-              <PlanetOverview planet={currentPlanet} />
+              <PlanetOverview color={currentPlanet.planetColor} planet={currentPlanet} />
             </Route>
             <Route path={`/planets/${params.planetName}/structure`}>
-              <PlanetStructure planet={currentPlanet} />
+              <PlanetStructure color={currentPlanet.planetColor} planet={currentPlanet} />
             </Route>
             <Route path={`/planets/${params.planetName}/surface`}>
-              <PlanetSurface planet={currentPlanet} />
+              <PlanetSurface color={currentPlanet.planetColor} planet={currentPlanet} />
             </Route>
           </Switch>
         </div>
