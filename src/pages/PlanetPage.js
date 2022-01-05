@@ -5,51 +5,93 @@ import { NavLink, Route, Switch } from "react-router-dom";
 import PlanetOverview from "../components/PlanetOverview";
 import PlanetStructure from "../components/PlanetStructure";
 import PlanetSurface from "../components/PlanetSurface";
-import { useParams, useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
+import {
+  useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
+
+import Loader from "react-loader-spinner";
 
 const PlanetPage = (props) => {
-  const match = useRouteMatch();
-  const params = useParams();
-  console.log(props.planets);
-  const currentPlanet = props.planets.find((planet) => planet.name === params.planetName);
 
-  console.log(match);
+  const params = useParams();
+
+  const currentPlanet = props.planets.find(
+    (planet) => planet.name === params.planetName
+  );
+
+ const spinner = !props.planets.length;
+
+ console.log(spinner);
+
+ let planetData = (<p>LOADING</p>);
+
+  if (spinner) {
+    planetData = (
+      <div className="loadingSpinner">
+        <Loader type="Circles" color="white" height={80} width={80}></Loader>
+      </div>
+    );
+  } else {
+    planetData = (
+      <Fragment>
+        <div className={styles.planetOverviewPage}>
+          <nav className={styles.overview_nav}>
+            <NavLink
+              to={`/planets/${params.planetName}/overview`}
+              activeClassName={styles.activeTab}
+            >
+              Overview
+            </NavLink>
+            <NavLink
+              to={`/planets/${params.planetName}/structure`}
+              activeClassName={styles.activeTab}
+            >
+              Structure
+            </NavLink>
+            <NavLink to={`/planets/${params.planetName}/surface`}>
+              Surface
+            </NavLink>
+          </nav>
+
+          <Switch>
+            <Route path={`/planets/${params.planetName}/overview`}>
+              <PlanetOverview planet={currentPlanet} />
+            </Route>
+            <Route path={`/planets/${params.planetName}/structure`}>
+              <PlanetStructure planet={currentPlanet} />
+            </Route>
+            <Route path={`/planets/${params.planetName}/surface`}>
+              <PlanetSurface planet={currentPlanet} />
+            </Route>
+          </Switch>
+        </div>
+
+        <div className={styles.planetStats}>
+          <ul className={styles.planetStatsList}>
+            <PlanetFactBar
+              stat={"Rotation Time"}
+              value={currentPlanet.rotation}
+            />
+            <PlanetFactBar
+              stat={"Revolution Time"}
+              value={currentPlanet.revolution}
+            />
+            <PlanetFactBar stat={"Radius"} value={currentPlanet.radius} />
+            <PlanetFactBar
+              stat={"Average Temp."}
+              value={currentPlanet.temperature}
+            />
+          </ul>
+        </div>
+      </Fragment>
+    );
+  }
+
   return (
     <Fragment>
-      <div className={styles.planetOverviewPage}>
-        <nav className={styles.overview_nav}>
-          <NavLink to={`/planets/${match.params['planetName']}/overview`} activeClassName={styles.activeTab}>
-            Overview
-          </NavLink>
-          <NavLink to={`/planets/${params.planetName}/structure`} activeClassName={styles.activeTab}>
-            Structure
-          </NavLink>
-          <NavLink to={`/planets/${params.planetName}/surface`}>Surface</NavLink>
-        </nav>
-
-        <Switch>
-        <Route path={`/planets/${params.planetName}/overview`}>
-          <PlanetOverview planet={currentPlanet} />
-        </Route>
-          <Route path={`/planets/${params.planetName}/structure`}>
-          <PlanetStructure planet={currentPlanet} />
-        </Route>
-        <Route path={`/planets/${params.planetName}/surface`}>
-          <PlanetSurface planet={currentPlanet} />
-        </Route>
-        </Switch>
-      </div>
-
-      <div className={styles.planetStats}>
-        <ul className={styles.planetStatsList}>
-          <PlanetFactBar stat={'Rotation Time'} value={currentPlanet.rotation} />
-          <PlanetFactBar stat={'Revolution Time'} value={currentPlanet.revolution} />
-          <PlanetFactBar stat={'Radius'} value={currentPlanet.radius} />
-          <PlanetFactBar stat={'Average Temp.'} value={currentPlanet.temperature} />
-        </ul>
-      </div>
+{planetData}
     </Fragment>
-  );
+  ) ;
 };
 
 export default PlanetPage;

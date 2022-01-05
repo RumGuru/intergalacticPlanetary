@@ -16,7 +16,8 @@ function App() {
   const fetchData = useCallback(async () => {
     setLoadingSpinner(true);
     try{
-      const result = await fetch('data.json');
+      const result = await fetch('http://localhost:3000/data.json');
+      console.log(result);
       if (!result.ok){
         throw new Error('could not load data')
       }
@@ -37,7 +38,7 @@ function App() {
 
   let planetList = <p style={{color:"white"}}>No Movies Found</p>;
 
-  if (!loadingSpinner && planetData !== null) {
+  if (!loadingSpinner && planetData !== []) {
     planetList = (<PlanetList planets={planetData}/>);
   }
 
