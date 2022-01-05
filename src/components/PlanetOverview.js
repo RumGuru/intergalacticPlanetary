@@ -13,7 +13,9 @@ const PlanetOverview = (props) => {
     return (
         <Fragment>
         <section className={styles.planetImageSection}>
+          <div className={styles.planetImageContainer}>
         <img className={styles.planetImage} src={imagePath} alt="Planet"></img>
+        </div>
       </section>
       <section className={styles.planetTitleSection}>
         <h5 className={styles.planetTitle}>{props.planet.name}</h5>
