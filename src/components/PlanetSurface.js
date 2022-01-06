@@ -14,8 +14,12 @@ const PlanetSurface = (props) => {
     return (
         <Fragment>
         <section className={styles.planetImageSection}>
+        <div className={styles.planetImageContainer}>
         <img className={styles.planetImage} src={planetImagePath} alt="Planet"></img>
+        <div className={styles.geologyIcon}>
         <img className={styles.geologyImage} src={geologyImagePath} alt="Planet"></img>
+        </div>
+        </div>
       </section>
       <section className={styles.planetTitleSection}>
         <h5 className={styles.planetTitle}>{props.planet.name}</h5>

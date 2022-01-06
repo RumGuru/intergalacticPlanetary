@@ -14,10 +14,10 @@
         align-items: center;
         margin-bottom: 0rem;
     
-       /* .planetImage{
-            width: 111px;
-            height: 111px;
-        } */
+       .planetImage{
+           max-width:100%;
+            max-height:100%;
+        } 
 
         .planetImageContainer{
             width: 30%;
@@ -29,16 +29,19 @@
             height: 80px;
             position: absolute;
             top: 250px;
+            left: 152px;
         }
     }
 
     @media (min-width:700px) {
         .planetImageSection{
         .geologyImage{
-            width: 70px;
-            height: 80px;
+            width: 160px;
+            height: 180px;
             position: absolute;
-            top: 200px;
+            top: 280px;
+            left: 435px;
+
         }
     }
     }
