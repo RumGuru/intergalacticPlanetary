@@ -22,25 +22,27 @@
         .planetImageContainer{
             width: 30%;
             height: 30%;
+            text-align: center;
         }
 
         .geologyImage{
             width: 70px;
             height: 80px;
-            position: absolute;
-            top: 250px;
-            left: 152px;
+            position: relative;
+            top: -55px;
+            left: 0px;
         }
     }
+
 
     @media (min-width:700px) {
         .planetImageSection{
         .geologyImage{
             width: 160px;
             height: 180px;
-            position: absolute;
-            top: 280px;
-            left: 435px;
+            position: relative;
+            top: -105px;
+            left: 0px;
 
         }
     }
