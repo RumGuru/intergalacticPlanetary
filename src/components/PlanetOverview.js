@@ -36,7 +36,7 @@ const PlanetOverview = (props) => {
       </section>
       </div>
       <div className={styles.planetLinks}>
-      <PlanetLinks/>
+      <PlanetLinks color={props.planet.planetUiColor} planetName={props.planet.name}/>
       </div>
       </div>
       </Fragment>

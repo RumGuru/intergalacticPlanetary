@@ -56,8 +56,39 @@ function App() {
             break;
           default:
             color = "pink";
-        }
-        return { ...planet, planetColor: color };
+        };
+
+        let uiColor;
+        switch (planet.name) {
+          case "Mercury":
+            uiColor = "#419EBB";
+            break;
+          case "Venus":
+            uiColor = "#EDA249";
+            break;
+          case "Earth":
+            uiColor = "#6D2ED5";
+            break;
+          case "Mars":
+            uiColor = "#FF6A45";
+            break;
+          case "Jupiter":
+            uiColor = "#ECAD7A";
+            break;
+          case "Saturn":
+            uiColor = "#FCCB6B";
+            break;
+          case "Uranus":
+            uiColor = "#65F0D5";
+            break;
+          case "Neptune":
+            uiColor = "#497EFA";
+            break;
+          default:
+            uiColor = "pink";
+        };
+
+        return { ...planet, planetColor: color , planetUiColor:uiColor };
       });
 
       setPlanetData(newData);

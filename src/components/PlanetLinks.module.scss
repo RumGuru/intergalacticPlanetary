@@ -2,12 +2,15 @@
 
     list-style: none;
     text-decoration: none;
+    margin-top: 3rem;
     li{
         border: 2px solid #97979744;
         width: auto;
         display: flex;
         padding: 1.25rem;
-        margin-bottom: 0.8rem;
+        margin-bottom: 1rem;
+        align-items: center;
+        gap: 20px;
     }
     a{
         text-decoration: none;
@@ -15,3 +18,11 @@
         font-size: 1.5em;
     }
 }
+
+.navNumber{
+    color: #d8d8d88e;
+    font-size: 1.3rem;
+    margin: 0;
+    font-family: 'Spartan', sans-serif;
+}
+
