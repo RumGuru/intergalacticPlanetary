@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 
 import source from "../starter-code/assets/icon-source.svg";
+import PlanetLinks from "./PlanetLinks";
 
 import styles from './PlanetOverview.module.scss';
 
@@ -17,6 +18,8 @@ const PlanetOverview = (props) => {
         <img className={styles.planetImage} src={imagePath} alt="Planet"></img>
         </div>
       </section>
+      <div className={styles.planetInterface}>
+        <div className={styles.planetData}>
       <section className={styles.planetTitleSection}>
         <h5 className={styles.planetTitle}>{props.planet.name}</h5>
       </section>
@@ -31,6 +34,11 @@ const PlanetOverview = (props) => {
         </a>
         <img className={styles.sourceIcon} src={source} alt="Source Icon"></img>
       </section>
+      </div>
+      <div className={styles.planetLinks}>
+      <PlanetLinks/>
+      </div>
+      </div>
       </Fragment>
     )
 } 

@@ -8,7 +8,7 @@
     
     .planetImageSection{
         @include flexCenter();
-        margin-top: 3rem;
+        margin-top: 7rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -81,3 +81,50 @@
     }
     
 
+
+
+    @media (min-width:700px) {
+      .sourceSection{
+          margin-top: 5rem;
+          justify-content: flex-start;
+      }
+
+      .planetTitleSection{
+          justify-content: flex-start;
+      }
+
+      .planetOverviewSection{
+          width: 35rem;
+          text-align: left;
+          line-height: 1.5;
+          padding: 0;
+          font-size: 1.3em;
+      }
+
+      .planetImageSection{
+          margin-bottom: 4rem;
+      }
+      
+      .planetInterface{
+          margin-left: 2rem;
+          .planetLinks{
+              align-self: center;
+              margin-right: 1.5rem;
+          }
+      }
+
+
+    }
+
+    .planetInterface{
+        display: flex;
+    }
+
+    .planetData{
+        align-self: flex-start;
+       
+    }
+
+    .planetLinks{
+        width: 30rem;
+    }

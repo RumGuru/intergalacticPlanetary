@@ -1,13 +1,15 @@
 import React, { Fragment } from "react";
 import styles from "./PlanetPage.module.scss";
 import PlanetFactBar from "../components/PlanetFactBar";
-import { NavLink, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import PlanetOverview from "../components/PlanetOverview";
 import PlanetStructure from "../components/PlanetStructure";
 import PlanetSurface from "../components/PlanetSurface";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 import Loader from "react-loader-spinner";
+import MobileNavbar from "../components/MobileNavbar";
+import PlanetLinks from "../components/PlanetLinks";
 
 const PlanetPage = (props) => {
   const params = useParams();
@@ -36,29 +38,7 @@ const PlanetPage = (props) => {
     planetData = (
       <Fragment>
         <div className={styles.planetOverviewPage}>
-          <nav className={styles.overview_nav}>
-            <NavLink
-              to={`/planets/${params.planetName}/overview`}
-              activeClassName={styles.activeTab}
-              activeStyle={{ borderBottom: `4px solid ${color}` }}
-            >
-              Overview
-            </NavLink>
-            <NavLink
-              to={`/planets/${params.planetName}/structure`}
-              activeClassName={styles.activeTab}
-              activeStyle={{ borderBottom: `4px solid ${color}` }}
-            >
-              Structure
-            </NavLink>
-            <NavLink
-              to={`/planets/${params.planetName}/surface`}
-              activeClassName={styles.activeTab}
-              activeStyle={{ borderBottom: `4px solid ${color}` }}
-            >
-              Surface
-            </NavLink>
-          </nav>
+          <MobileNavbar color={color} planetName={params.planetName} />
 
           <Switch>
             <Route path={`/planets/${params.planetName}/overview`}>
@@ -80,6 +60,7 @@ const PlanetPage = (props) => {
               />
             </Route>
           </Switch>
+        
         </div>
 
         <div className={styles.planetStats}>

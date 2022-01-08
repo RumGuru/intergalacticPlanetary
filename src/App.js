@@ -98,7 +98,7 @@ function App() {
   return (
     <div className="App">
       <Route path={"/"}>
-        <Header openDropdown={openDropdown} />
+        <Header openDropdown={openDropdown} planets={planetData} />
       </Route>
       <main>
         {showDropdown && <Dropdown planets={planetData} closeDropdown={closeDropdown} />}

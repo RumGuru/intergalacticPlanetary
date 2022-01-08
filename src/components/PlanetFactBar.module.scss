@@ -22,3 +22,15 @@
     flex-direction: column;
     align-items: flex-end;
 }
+
+@media (min-width: 700px){
+    .planetStatListItem{
+        flex-direction: column;
+        width: 13rem;
+    }
+
+    .planetValues{
+        flex-direction: row;
+        font-size: 3vw;
+    }
+}

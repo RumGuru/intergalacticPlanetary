@@ -1,0 +1,16 @@
+.planetNav{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.planetNavLink{
+text-decoration: none;
+color: #d8d8d896;
+margin-bottom: 1rem;
+font-size: 1.2vw;
+}
+
+
+.planetNavLink:hover{
+    color: white;
+}
