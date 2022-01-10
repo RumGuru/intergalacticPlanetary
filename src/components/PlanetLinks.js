@@ -1,56 +1,40 @@
-import { useEffect } from "react";
+
 import { NavLink } from "react-router-dom";
-import { useState } from "react/cjs/react.development";
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import styles from "./PlanetLinks.module.scss";
 
 const PlanetLinks = (props) => {
-  const [selectedTab , setSelectedTab] = useState('Overview');
+  const location = useLocation();
 
-  const overviewClickHandler = () => {
-    setSelectedTab('Overview');
-  }
-  const internalClickHandler = () => {
-    setSelectedTab('Internal');
-  }
-  const geologyClickHandler = () => {
-    setSelectedTab('Geology');
-  }
-
-
-  let activeElement = selectedTab;
-  console.log(selectedTab , activeElement);
 
   return (
-    <ul className={styles.planetLinks} onClick={internalClickHandler}>
-      <li style={activeElement=== 'Overview' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
+    <ul className={styles.planetLinks}>
+      <li style={location.pathname === '/planets/Earth/overview' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
         <p className={styles.navNumber}>01</p>
         <NavLink
           to={`/planets/${props.planetName}/overview`}
           activeClassName={styles.activeTab}
           activeStyle={{ borderBottom: `4px solid ${props.color}` }}
-          onClick={overviewClickHandler}
         >
          Overview 
         </NavLink>
       </li>
-      <li className={activeElement === 'Internal' ? styles.active : ''}>
+      <li style={location.pathname === '/planets/Earth/structure' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
       <p className={styles.navNumber}>02</p>
         <NavLink
           to={`/planets/${props.planetName}/structure`}
           activeClassName={styles.activeTab}
           activeStyle={{ borderBottom: `4px solid ${props.color}` }}
-          onClick={internalClickHandler}
         >
           Internal Structure
         </NavLink>
       </li>
-      <li className={activeElement === 'Geology' ? styles.active : ''}>
+      <li style={location.pathname === '/planets/Earth/surface' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
       <p className={styles.navNumber}>03</p>
         <NavLink
           to={`/planets/${props.planetName}/surface`}
           activeClassName={styles.activeTab}
           activeStyle={{ borderBottom: `4px solid ${props.color}` }}
-          onClick={geologyClickHandler}
         >
           Surface Geology
         </NavLink>

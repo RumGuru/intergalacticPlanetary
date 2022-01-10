@@ -26,3 +26,8 @@
     font-family: 'Spartan', sans-serif;
 }
 
+@media only screen and (max-width: 600px) {
+    .planetLinks{
+        display: none;
+    }
+  }
