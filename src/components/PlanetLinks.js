@@ -16,11 +16,9 @@ const PlanetLinks = (props) => {
     setSelectedTab('Geology');
   }
 
- useEffect(()=>{
-   console.log(selectedTab)
- },[selectedTab]);
 
   let activeElement = selectedTab;
+  console.log(selectedTab , activeElement);
 
   return (
     <ul className={styles.planetLinks}>
