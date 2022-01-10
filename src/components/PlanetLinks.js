@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useState } from "react/cjs/react.development";
 import styles from "./PlanetLinks.module.scss";
@@ -15,10 +16,15 @@ const PlanetLinks = (props) => {
     setSelectedTab('Geology');
   }
 
-  const activeElement = selectedTab;
+ useEffect(()=>{
+   console.log(selectedTab)
+ },[selectedTab]);
+
+  let activeElement = selectedTab;
+
   return (
     <ul className={styles.planetLinks}>
-      <li style={activeElement=== 'Overview' &&{backgroundColor: props.color}}>
+      <li style={activeElement=== 'Overview' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
         <p className={styles.navNumber}>01</p>
         <NavLink
           to={`/planets/${props.planetName}/overview`}
@@ -29,7 +35,7 @@ const PlanetLinks = (props) => {
          Overview 
         </NavLink>
       </li>
-      <li className={activeElement === 'Internal' && styles.active}>
+      <li className={activeElement === 'Internal' ? styles.active : ''}>
       <p className={styles.navNumber}>02</p>
         <NavLink
           to={`/planets/${props.planetName}/structure`}
@@ -40,7 +46,7 @@ const PlanetLinks = (props) => {
           Internal Structure
         </NavLink>
       </li>
-      <li className={activeElement === 'Geology' && styles.active}>
+      <li className={activeElement === 'Geology' ? styles.active : ''}>
       <p className={styles.navNumber}>03</p>
         <NavLink
           to={`/planets/${props.planetName}/surface`}
