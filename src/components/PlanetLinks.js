@@ -21,7 +21,7 @@ const PlanetLinks = (props) => {
   console.log(selectedTab , activeElement);
 
   return (
-    <ul className={styles.planetLinks}>
+    <ul className={styles.planetLinks} onClick={internalClickHandler}>
       <li style={activeElement=== 'Overview' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
         <p className={styles.navNumber}>01</p>
         <NavLink
