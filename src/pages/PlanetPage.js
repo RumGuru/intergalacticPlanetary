@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 import Loader from "react-loader-spinner";
 import MobileNavbar from "../components/MobileNavbar";
-import PlanetLinks from "../components/PlanetLinks";
+
 
 const PlanetPage = (props) => {
   const params = useParams();
