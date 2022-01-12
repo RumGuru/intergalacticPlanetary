@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import styles from "./PlanetPage.module.scss";
 import PlanetFactBar from "../components/PlanetFactBar";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import PlanetOverview from "../components/PlanetOverview";
 import PlanetStructure from "../components/PlanetStructure";
 import PlanetSurface from "../components/PlanetSurface";
@@ -41,6 +41,10 @@ const PlanetPage = (props) => {
           <MobileNavbar color={color} planetName={params.planetName} />
 
           <Switch>
+            <Route exact path={`/planets/${params.planetName}`}>
+              {<Redirect to={`/planets/${params.planetName}/overview`} />}
+            </Route>
+
             <Route path={`/planets/${params.planetName}/overview`}>
               <PlanetOverview
                 color={currentPlanet.planetColor}
@@ -60,7 +64,6 @@ const PlanetPage = (props) => {
               />
             </Route>
           </Switch>
-        
         </div>
 
         <div className={styles.planetStats}>
