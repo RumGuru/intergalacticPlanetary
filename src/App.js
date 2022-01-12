@@ -131,7 +131,7 @@ function App() {
       <Route path={"/"}>
         <Header openDropdown={openDropdown} planets={planetData} />
       </Route>
-      <main>
+      <main className="mainContent">
         {showDropdown && <Dropdown planets={planetData} closeDropdown={closeDropdown} />}
         <Switch>
           <Route path={"/planets/:planetName"}>
