@@ -9,7 +9,7 @@ const PlanetLinks = (props) => {
 
   return (
     <ul className={styles.planetLinks}>
-      <li style={location.pathname === '/planets/Earth/overview' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
+      <li style={location.pathname === `/planets/${props.planetName}/overview` ? {backgroundColor: props.color} : {backgroundColor: ""} }>
         <p className={styles.navNumber}>01</p>
         <NavLink
           to={`/planets/${props.planetName}/overview`}
@@ -19,7 +19,7 @@ const PlanetLinks = (props) => {
          Overview 
         </NavLink>
       </li>
-      <li style={location.pathname === '/planets/Earth/structure' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
+      <li style={location.pathname === `/planets/${props.planetName}/structure` ? {backgroundColor: props.color} : {backgroundColor: ""} }>
       <p className={styles.navNumber}>02</p>
         <NavLink
           to={`/planets/${props.planetName}/structure`}
@@ -29,7 +29,7 @@ const PlanetLinks = (props) => {
           Internal Structure
         </NavLink>
       </li>
-      <li style={location.pathname === '/planets/Earth/surface' ? {backgroundColor: props.color} : {backgroundColor: ""} }>
+      <li style={location.pathname === `/planets/${props.planetName}/surface` ? {backgroundColor: props.color} : {backgroundColor: ""} }>
       <p className={styles.navNumber}>03</p>
         <NavLink
           to={`/planets/${props.planetName}/surface`}
