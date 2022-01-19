@@ -11,6 +11,7 @@ const PlanetOverview = (props) => {
 
   const imagePath = props.planet.images.planet.substring(1);  
 
+
     return (
         <Fragment>
         <section className={styles.planetImageSection}>
